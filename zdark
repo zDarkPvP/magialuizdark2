@@ -1,4 +1,4 @@
-f (-not ("Win32" -as [type])) {
+if (-not ("Win32" -as [type])) {
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
