@@ -83,11 +83,12 @@ while ($true) {
 
         # ---- Ajustare pentru 18-22 CPS ----
         # Reduce delay-urile pentru a crește click-urile
-        $targetCps = 9 + [Math]::Abs(([Math]::Sin($idx / 12)) * 6)
+        # 15 -> 8 -> 15 -> 8 ...
+        $targetCps = 15 - ($idx % 8)
 
         $interval = 1000 / $targetCps
-        $downDelay = [Math]::Max(1, [int]($interval / 2))
-        $upDelay   = [Math]::Max(1, [int]($interval / 2))
+        $downDelay = [int]($interval / 2)
+        $upDelay   = [int]($interval / 2)
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 2; $finger++) {
             if ($doLeft)  { [Win32]::mouse_event([Win32]::LEFTDOWN,  0,0,0,0) }
