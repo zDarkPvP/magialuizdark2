@@ -1,4 +1,4 @@
-if (-not ("Win32" -as [type])) {
+f (-not ("Win32" -as [type])) {
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
@@ -81,18 +81,10 @@ while ($true) {
         $pair = $config[$idx % $config.Count]
         $idx++
 
-        # ---- Ajustare pentru 18-22 CPS ----
-        # Reduce delay-urile pentru a crește click-urile
-       # 15 -> 14 -> 13 -> 12 -> 11 -> 10 -> 9 -> 8 -> 15
-       $targetCps = 15 - ($idx % 8)
+        # ---- Ajustare pentru 11-15 CPS ----
+        $downDelay = [Math]::Max(1, $pair[0] + 4 + $rand.Next(-2,3))
+        $upDelay   = [Math]::Max(1, $pair[1] + 4 + $rand.Next(-2,3))
 
-       # Ai 2 click-uri per ciclu, deci timpul unui ciclu trebuie
-       # să fie 2 / targetCps secunde.
-       $totalCycleMs = 2000.0 / $targetCps
-
-       # Împărțim timpul între cele două click-uri
-       $downDelay = [Math]::Max(1, [int]($totalCycleMs * 0.5))
-       $upDelay   = [Math]::Max(1, [int]($totalCycleMs * 0.5))
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 2; $finger++) {
             if ($doLeft)  { [Win32]::mouse_event([Win32]::LEFTDOWN,  0,0,0,0) }
