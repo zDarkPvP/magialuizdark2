@@ -87,7 +87,7 @@ while ($true) {
         $upDelay   = [Math]::Max(1, $pair[1] - 4 + $rand.Next(-1,2))
 
         # Simulare butterfly mic: două mini-click-uri rapid alternante
-        for ($finger=0; $finger -lt 1; $finger++) {
+        for ($finger=0; $finger -lt 2; $finger++) {
             if ($doLeft)  { [Win32]::mouse_event([Win32]::LEFTDOWN,  0,0,0,0) }
             if ($doRight) { [Win32]::mouse_event([Win32]::RIGHTDOWN, 0,0,0,0) }
 
