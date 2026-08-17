@@ -67,7 +67,7 @@ function SpinWaitMs($ms) {
 }
 
 Write-Host "Facut de rege1 si n am cchef sa ma joc legit" -ForegroundColor green
-Write-Host "Ca sa iesi F12 Milog mic ce esti" -foregroundColor green
+Write-Host "Ca sa iesi F12 Milog mic ce estti" -foregroundColor green
 
 while ($true) {
 
@@ -81,21 +81,21 @@ while ($true) {
         $pair = $config[$idx % $config.Count]
         $idx++
 
-      # ---- Ajustare pentru ~13-16 CPS ----
-       $downDelay = [Math]::Max(1, $pair[0] + 2 + $rand.Next(-1,1))
-       $upDelay   = [Math]::Max(1, $pair[1] + 3 + $rand.Next(-1,1))
+      # ---- Ajustare pentru ~11-14 CPS ----
+       $downDelay = [Math]::Max(1, $pair[0] + 2 + $rand.Next(-1,))
+       $upDelay   = [Math]::Max(1, $pair[1] + 3 + $rand.Next(-1,))
 
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 1; $finger++) {
             if ($doLeft)  { [Win32]::mouse_event([Win32]::LEFTDOWN,  0,0,0,0) }
             if ($doRight) { [Win32]::mouse_event([Win32]::RIGHTDOWN, 0,0,0,0) }
 
-            SpinWaitMs($downDelay + $rand.Next(-1,1)) # jitter foarte mic
+            SpinWaitMs($downDelay + $rand.Next(-1,)) # jitter foarte mic
 
             if ($doLeft)  { [Win32]::mouse_event([Win32]::LEFTUP, 0,0,0,0) }
             if ($doRight) { [Win32]::mouse_event([Win32]::RIGHTUP, 0,0,0,0) }
 
-            SpinWaitMs($upDelay + $rand.Next(-1,1))   # jitter foarte mic
+            SpinWaitMs($upDelay + $rand.Next(-1,))   # jitter foarte mic
         }
     }
 }
