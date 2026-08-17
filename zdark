@@ -1,4 +1,4 @@
-f (-not ("Win32" -as [type])) {
+if (-not ("Win32" -as [type])) {
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
@@ -81,9 +81,10 @@ while ($true) {
         $pair = $config[$idx % $config.Count]
         $idx++
 
-        # ---- Ajustare pentru 11-15 CPS ----
-        $downDelay = [Math]::Max(1, $pair[0] + 4 + $rand.Next(-2,3))
-        $upDelay   = [Math]::Max(1, $pair[1] + 4 + $rand.Next(-2,3))
+        # ---- Ajustare pentru 18-22 CPS ----
+        # Reduce delay-urile pentru a crește click-urile
+        $downDelay = [Math]::Max(1, $pair[0] - 2 + $rand.Next(-2,3))
+        $upDelay   = [Math]::Max(1, $pair[1] - 3 + $rand.Next(-2,3))
 
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 2; $finger++) {
