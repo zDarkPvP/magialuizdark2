@@ -82,8 +82,8 @@ while ($true) {
         $idx++
 
       # ---- Ajustare pentru ~6-9 CPS ----
-       $downDelay = [Math]::Max(1, $pair[0] + 8 + $rand.Next(-1,2))
-       $upDelay   = [Math]::Max(1, $pair[1] + 8 + $rand.Next(-1,2))
+       $downDelay = [Math]::Max(1, $pair[0] + 10 + $rand.Next(-1,2))
+       $upDelay   = [Math]::Max(1, $pair[1] + 10 + $rand.Next(-1,2))
 
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 2; $finger++) {
