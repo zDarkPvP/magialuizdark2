@@ -81,9 +81,9 @@ while ($true) {
         $pair = $config[$idx % $config.Count]
         $idx++
 
-      # ---- Ajustare pentru ~9-12 CPS ----
-       $downDelay = [Math]::Max(1, $pair[0] + 5 + $rand.Next(-1,2))
-       $upDelay   = [Math]::Max(1, $pair[1] + 5 + $rand.Next(-1,2))
+      # ---- Ajustare pentru ~6-9 CPS ----
+       $downDelay = [Math]::Max(1, $pair[0] + 8 + $rand.Next(-1,2))
+       $upDelay   = [Math]::Max(1, $pair[1] + 8 + $rand.Next(-1,2))
 
         # Simulare butterfly mic: două mini-click-uri rapid alternante
         for ($finger=0; $finger -lt 2; $finger++) {
