@@ -66,8 +66,8 @@ function SpinWaitMs($ms) {
     while ($sw.ElapsedMilliseconds -lt $ms) { }
 }
 
-Write-Host "Facut de rege1 si n am cchef sa maa jroc legit" -ForegroundColor green
-Write-Host "Ca sa iesi F12 Milog mic ce estti" -foregroundColor green
+Write-Host "Facut de zdark regele" -ForegroundColor red
+Write-Host "Ca sa iesi F12 sageato" -foregroundColor green
 
 while ($true) {
 
