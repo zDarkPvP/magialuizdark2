@@ -81,7 +81,7 @@ while ($true) {
         $pair = $config[$idx % $config.Count]
         $idx++
 
-        # ---- Ajustare pentru 18-22 CPS ----
+        # ---- Ajustare pentru 14-17 CPS ----
         # Reduce delay-urile pentru a crește click-urile
         $downDelay = [Math]::Max(2, $pair[0] - 3 + $rand.Next(-1,2))
         $upDelay   = [Math]::Max(2, $pair[1] - 2 + $rand.Next(-1,2))
